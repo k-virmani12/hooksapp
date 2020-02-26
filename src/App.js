@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [ songs, setSongs ] = useState ([
+		{
+			name : 'The Wild darkness',
+			id : 1 
+		},{
+			name : 'Memory gospel',
+			id : 2
+		},{
+			name : 'Maps',
+			id : 3
+		}]
+	);
+
+	return (
+		<div className="song-list">
+			<ul>
+				{ songs.map ( ( song, index ) => {
+				return (
+				<li key = {`song-${index}`}>
+					{song.name}
+				</li>
+				)})}
+			</ul>
+			<label for = "namefield">Enter name here:
+				<input type = "text" id = "namefield" />
+			</label>
+		</div>
+		);
 }
 
 export default App;
