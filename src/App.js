@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SongForm from './songform';
 
 function App() {
 	const [ songs, setSongs ] = useState ([
@@ -14,6 +15,14 @@ function App() {
 		}]
 	);
 
+	const addSong = ( songName) => {
+		let newSong = {
+			name : songName,
+			id : 4
+		}
+		setSongs ([...songs, newSong]);
+	}
+		
 	return (
 		<div className="song-list">
 			<ul>
@@ -24,9 +33,7 @@ function App() {
 				</li>
 				)})}
 			</ul>
-			<label for = "namefield">Enter name here:
-				<input type = "text" id = "namefield" />
-			</label>
+			<SongForm addNewSong = {addSong} />
 		</div>
 		);
 }
